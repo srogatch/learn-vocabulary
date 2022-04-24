@@ -70,7 +70,10 @@ int main() {
       }
       wcout << vocabulary[0][i] << ": ";
       wstring trans;
-      wcin >> trans;
+      if(!getline(wcin, trans)) {
+        wcout << L"User request to exit" << endl;
+        break;
+      }
       if(vocabulary[i_word][i] != trans) {
         wcout << L"Wrong. Correct: " << vocabulary[i_word][i] << endl;
       }
