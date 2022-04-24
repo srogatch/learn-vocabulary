@@ -40,9 +40,11 @@ int main() {
     return 1;
   }
   vocabulary.emplace_back(SplitLine(line));
-  if(vocabulary.back().size() == 1 && vocabulary.back().back().empty()) {
-    wcout << L"Empty header line." << endl;
-    return 2;
+  for(int i=0; i<vocabulary[0].size(); i++) {
+    if(vocabulary[0][i].empty()) {
+      wcout << L"Language titles cannot be empty in the header line." << endl;
+      return 2;
+    }
   }
   while(getline(ifs, line)) {
     vocabulary.emplace_back(SplitLine(line));
