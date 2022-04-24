@@ -1,0 +1,41 @@
+{
+  "tasks": [
+    {
+      "label": "Create build directory",
+      "type": "shell",
+      "linux": {
+          "command": "mkdir -p ${fileDirname}/build"
+      },
+      "windows": {
+          "command": "cmd",
+          "args": ["/C", "if not exist ${fileDirname}\\build mkdir ${fileDirname}\\build"]
+      }
+    },
+    {
+      "type": "cppbuild",
+      "label": "C/C++: g++ build active file",
+      "command": "/usr/bin/g++",
+      "args": [
+        "--std",
+        "c++17",
+        "-fdiagnostics-color=always",
+        "-g",
+        "${file}",
+        "-o",
+        "${fileDirname}/build/${fileBasenameNoExtension}"
+      ],
+      "options": {
+        "cwd": "${fileDirname}/build"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "dependsOn": ["Create build directory"]
+    }
+  ],
+  "version": "2.0.0"
+}
