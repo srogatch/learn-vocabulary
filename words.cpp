@@ -32,7 +32,7 @@ int main() {
 
   wcout << L"Enter the vocabulary file name: ";
   wstring voc_fn;
-  wcin >> voc_fn;
+  getline(wcin, voc_fn);
   wifstream ifs{filesystem::path(voc_fn)};
   wstring line;
   if(!getline(ifs, line)) {
